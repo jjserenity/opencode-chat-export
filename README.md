@@ -44,7 +44,7 @@ Set `"enabled": true` to activate, then ask your agent to export the current con
 ## MCP Tools
 
 ### `export_current_session`
-Export the currently active conversation — the session that was most recently updated. This is the tool you want when you say "导出我们现在的对话". No need to know the session ID.
+Export the currently active conversation — the session that was most recently updated. This is the tool you want when you need to save the conversation you are having right now. No need to know the session ID.
 
 **Parameters:**
 - `output_dir` (optional, default: `~/opencode-exports/`)
