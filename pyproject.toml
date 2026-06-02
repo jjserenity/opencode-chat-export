@@ -1,6 +1,6 @@
 [project]
 name = "opencode-chat-export"
-version = "1.0.0"
+version = "1.0.1"
 description = "MCP server to export OpenCode chat history to Markdown"
 authors = [{ name = "Serenity Zhou", email = "serenity.jingjing@gmail.com" }]
 license = { text = "MIT" }
