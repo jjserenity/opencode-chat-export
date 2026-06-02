@@ -1,0 +1,25 @@
+name: Publish to PyPI
+
+on:
+  push:
+    tags:
+      - "v*"  # triggered when you push a tag like v1.0.0, v1.0.1, etc.
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write  # required for trusted publishing (OIDC)
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          version: "latest"
+
+      - name: Build package
+        run: uv build
+
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
