@@ -18,9 +18,12 @@ def _find_db() -> str:
         os.path.expanduser(r"~\.local\share\opencode\opencode.db"),
     ]
     for p in candidates:
+        if os.path.isfile(p) and os.path.getsize(p) > 0:
+            return p
+    # fallback to first candidate that exists (even if empty)
+    for p in candidates:
         if os.path.exists(p):
             return p
-    # fallback to first candidate
     return candidates[0]
 
 DB_PATH = _find_db()
