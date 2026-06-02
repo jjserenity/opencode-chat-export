@@ -250,10 +250,10 @@ def _safe_filename(text: str, max_len: int = 60) -> str:
 
 def _get_project_name(row: sqlite3.Row) -> str:
     """Resolve project name from a session row (with LEFT JOINed project fields)."""
-    if row.get("project_name"):
+    if row["project_name"]:
         return row["project_name"]
-    worktree = row.get("worktree") or ""
-    directory = row.get("directory") or ""
+    worktree = row["worktree"] or ""
+    directory = row["directory"] or ""
     path = worktree or directory
     if path:
         return os.path.basename(os.path.normpath(path))
