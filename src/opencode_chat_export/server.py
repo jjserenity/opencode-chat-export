@@ -13,10 +13,16 @@ from pathlib import Path
 
 def _find_db() -> str:
     """Locate the opencode.db file across known install locations."""
-    candidates = [
-        os.path.expanduser(r"~\AppData\Roaming\ai.opencode.desktop\opencode.db"),
-        os.path.expanduser(r"~\.local\share\opencode\opencode.db"),
-    ]
+    if sys.platform == "win32":
+        candidates = [
+            os.path.expanduser(r"~\AppData\Roaming\ai.opencode.desktop\opencode.db"),
+            os.path.expanduser("~/.local/share/opencode/opencode.db"),
+        ]
+    else:
+        candidates = [
+            os.path.expanduser("~/.local/share/opencode/opencode.db"),
+            os.path.expanduser(r"~\AppData\Roaming\ai.opencode.desktop\opencode.db"),
+        ]
     for p in candidates:
         if os.path.isfile(p) and os.path.getsize(p) > 0:
             return p
